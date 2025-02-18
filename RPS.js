@@ -52,20 +52,35 @@ function playGame() {
             return "Scissors Beats Paper, YOU WIN!!!"
         } else if(humanChoice == computerChoice){
             return "--TIE--"
-        } else {
-            return "Invalid Input"
         }
     }
 
     const computer = getComputerChoice()
     const human = getHumanChoice()
 
-    console.log("Computer's Choice: " + computer)
-    console.log("Your Choice: " + human)
-    console.log(playRound(computer, human))
-    console.log("Your Score: " + humanScore)
-    console.log("Computer Score: " + computerScore)
+    results.textContent = "Computer's Choice: " + computer
+    results.textContent = "Your Choice: " + human
+    results.textContent = playRound(computer, human)
+    results.textContent = "Your Score: " + humanScore
+    results.textContent = "Computer Score: " + computerScore
 }
+
+const rock = document.createElement("button")
+const scissors = document.createElement("button")
+const paper = document.createElement("button")
+
+rock.addEventListener("click", function(){
+    playGame(playRound("ROCK"))
+})
+scissors.addEventListener("click", function(){
+    playGame(playRound("SCISSORS"))
+})
+paper.addEventListener("click", function(){
+    playGame(playRound("PAPER"))
+})
+
+const results = document.createElement("div")
+
 
 playGame()
 
